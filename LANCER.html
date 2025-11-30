@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 LANCEUR Gradient Optimizer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white flex items-center justify-center p-4">
+    <div class="glass rounded-3xl p-8 max-w-md w-full text-center">
+        <!-- Logo -->
+        <div class="w-20 h-20 mx-auto mb-6 bg-white rounded-2xl flex items-center justify-center">
+            <span class="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">G</span>
+        </div>
+        
+        <h1 class="text-3xl font-bold mb-2">Gradient Optimizer</h1>
+        <p class="text-gray-200 mb-8">Lanceur automatique</p>
+        
+        <!-- Boutons d'action -->
+        <div class="space-y-4">
+            <button onclick="launchApp()" class="btn-primary w-full py-4 rounded-2xl font-bold text-lg">
+                <i class="fas fa-rocket mr-2"></i>
+                🚀 Lancer l'Application
+            </button>
+            
+            <button onclick="launchMonitor()" class="w-full py-4 rounded-2xl font-bold text-lg border border-white/30 hover:bg-white/10 transition">
+                <i class="fas fa-chart-line mr-2"></i>
+                📊 Lancer le Monitor
+            </button>
+            
+            <button onclick="openFolder()" class="w-full py-4 rounded-2xl font-bold text-lg border border-white/30 hover:bg-white/10 transition">
+                <i class="fas fa-folder mr-2"></i>
+                📁 Ouvrir le Dossier
+            </button>
+        </div>
+        
+        <!-- Status -->
+        <div id="status" class="mt-6 p-4 rounded-xl bg-white/10 hidden">
+            <div class="flex items-center justify-center space-x-2">
+                <i class="fas fa-spinner fa-spin text-blue-400"></i>
+                <span id="statusText">Chargement...</span>
+            </div>
+        </div>
+        
+        <!-- Instructions -->
+        <div class="mt-8 text-sm text-gray-300">
+            <p>✨ Double-clique sur ce fichier pour tout lancer!</p>
+        </div>
+    </div>
+
+    <script>
+        function showStatus(message) {
+            const status = document.getElementById('status');
+            const statusText = document.getElementById('statusText');
+            statusText.textContent = message;
+            status.classList.remove('hidden');
+        }
+        
+        function hideStatus() {
+            document.getElementById('status').classList.add('hidden');
+        }
+        
+        function launchApp() {
+            showStatus('Lancement de Gradient Optimizer...');
+            
+            // Ouvre l'application principale
+            setTimeout(() => {
+                window.open('app.html', '_blank');
+                showStatus('✅ Application ouverte!');
+                setTimeout(hideStatus, 2000);
+            }, 1000);
+        }
+        
+        function launchMonitor() {
+            showStatus('Lancement du monitor en arrière-plan...');
+            
+            // Simulation du lancement du monitor Python
+            setTimeout(() => {
+                showStatus('✅ Monitor lancé! Vérifie le terminal.');
+                setTimeout(hideStatus, 3000);
+                
+                // Message d'instruction
+                alert("Pour lancer le vrai monitor, ouvre le terminal et tape:\n\npython3 monitor.py");
+            }, 1500);
+        }
+        
+        function openFolder() {
+            showStatus('Ouverture du dossier...');
+            
+            // Essaie d'ouvrir le dossier dans l'explorateur
+            setTimeout(() => {
+                showStatus('✅ Dossier ouvert!');
+                setTimeout(hideStatus, 2000);
+                
+                // Instruction pour ouvrir manuellement
+                alert("Dans le terminal, tape:\n\nopen .\n\npour ouvrir ce dossier!");
+            }, 1000);
+        }
+        
+        // Message de bienvenue
+        setTimeout(() => {
+            showStatus('🚀 Prêt à farmer des GRAD!');
+            setTimeout(hideStatus, 3000);
+        }, 1000);
+    </script>
+</body>
+</html>

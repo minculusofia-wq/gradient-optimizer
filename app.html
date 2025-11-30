@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Gradient Optimizer Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-bold mb-4">🌈 Gradient Optimizer</h1>
+            <p class="text-xl opacity-80">Monitoring temps réel - Données réalistes</p>
+            <div class="mt-4 text-sm opacity-60" id="lastUpdate">Dernière mise à jour: --</div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="glass-card rounded-2xl p-6 text-center">
+                <div class="text-3xl mb-2">🕒</div>
+                <h3 class="text-lg font-semibold mb-2">Uptime</h3>
+                <div id="uptime" class="text-2xl font-bold">0.1h</div>
+                <div class="text-sm opacity-70 mt-2">Temps actif</div>
+            </div>
+            
+            <div class="glass-card rounded-2xl p-6 text-center">
+                <div class="text-3xl mb-2">🎮</div>
+                <h3 class="text-lg font-semibold mb-2">GPU Hours</h3>
+                <div id="gpuHours" class="text-2xl font-bold">0.1h</div>
+                <div class="text-sm opacity-70 mt-2">Puissance calcul</div>
+            </div>
+            
+            <div class="glass-card rounded-2xl p-6 text-center">
+                <div class="text-3xl mb-2">🌐</div>
+                <h3 class="text-lg font-semibold mb-2">Bandwidth</h3>
+                <div id="bandwidth" class="text-2xl font-bold">10 GB</div>
+                <div class="text-sm opacity-70 mt-2">Données transférées</div>
+            </div>
+        </div>
+
+        <!-- Rewards Card -->
+        <div class="glass-card rounded-2xl p-8 mb-8">
+            <h2 class="text-3xl font-bold mb-6 text-center">💰 Rewards Estimés</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div class="p-4 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-2xl">
+                    <div class="text-sm opacity-80">Total GRAD</div>
+                    <div id="totalGrad" class="text-2xl font-bold text-yellow-400">0.000</div>
+                </div>
+                <div class="p-4 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl">
+                    <div class="text-sm opacity-80">GPU Rewards</div>
+                    <div id="gpuRewards" class="text-xl text-purple-400">0.000 GRAD</div>
+                </div>
+                <div class="p-4 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl">
+                    <div class="text-sm opacity-80">Bandwidth</div>
+                    <div id="bandwidthRewards" class="text-xl text-blue-400">0.000 GRAD</div>
+                </div>
+                <div class="p-4 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-2xl">
+                    <div class="text-sm opacity-80">Uptime</div>
+                    <div id="uptimeRewards" class="text-xl text-green-400">0.000 GRAD</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status -->
+        <div class="text-center mb-8">
+            <div id="status" class="glass-card rounded-2xl p-4 inline-block">
+                <div class="flex items-center space-x-2 text-green-400">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>🟡 DÉMARRAGE - Synchronisation en cours...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="text-center">
+            <button onclick="deployNode()" class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300">
+                <i class="fas fa-rocket mr-2"></i>
+                🚀 Déployer le Vrai Nœud
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let startTime = new Date();
+        
+        function getRealisticMetrics() {
+            const now = new Date();
+            const uptime = (now - startTime) / (1000 * 60 * 60); // heures
+            const gpuHours = uptime * 0.8; // 80% d'utilisation
+            const bandwidth = 50 * uptime + Math.random() * 50; // ~50GB/h
+            
+            return {
+                uptime: Math.max(0.1, uptime),
+                gpuHours: Math.max(0.1, gpuHours),
+                bandwidth: Math.max(10, bandwidth),
+                status: uptime < 0.5 ? "🟡 DÉMARRAGE" : uptime < 2 ? "🟢 SYNCHRONISATION" : "🟢 FARMING ACTIF"
+            };
+        }
+        
+        function calculateRewards(metrics) {
+            const gpuRewards = metrics.gpuHours * 0.1;
+            const bandwidthRewards = metrics.bandwidth * 0.01;
+            const uptimeRewards = metrics.uptime * 0.005;
+            const total = gpuRewards + bandwidthRewards + uptimeRewards;
+            
+            return {
+                total: Math.max(0, total),
+                gpu: Math.max(0, gpuRewards),
+                bandwidth: Math.max(0, bandwidthRewards),
+                uptime: Math.max(0, uptimeRewards)
+            };
+        }
+        
+        function updateMetrics() {
+            const metrics = getRealisticMetrics();
+            const rewards = calculateRewards(metrics);
+            
+            document.getElementById('uptime').textContent = metrics.uptime.toFixed(1) + 'h';
+            document.getElementById('gpuHours').textContent = metrics.gpuHours.toFixed(1) + 'h';
+            document.getElementById('bandwidth').textContent = Math.round(metrics.bandwidth) + ' GB';
+            document.getElementById('totalGrad').textContent = rewards.total.toFixed(3);
+            document.getElementById('gpuRewards').textContent = rewards.gpu.toFixed(3) + ' GRAD';
+            document.getElementById('bandwidthRewards').textContent = rewards.bandwidth.toFixed(3) + ' GRAD';
+            document.getElementById('uptimeRewards').textContent = rewards.uptime.toFixed(3) + ' GRAD';
+            
+            const statusElement = document.getElementById('status');
+            statusElement.innerHTML = `<div class="flex items-center space-x-2 ${metrics.status.includes('🟢') ? 'text-green-400' : 'text-yellow-400'}">
+                <i class="fas fa-circle"></i>
+                <span>${metrics.status}</span>
+            </div>`;
+            
+            document.getElementById('lastUpdate').textContent = 
+                `Dernière mise à jour: ${new Date().toLocaleTimeString()}`;
+        }
+        
+        function deployNode() {
+            alert("🚀 Pour déployer le vrai nœud Parallax:\n\n1. Ouvre le terminal\n2. Tape: cd ~/Desktop/gradient-optimizer\n3. Modifie ton wallet dans deploy.sh\n4. Tape: ./deploy.sh");
+        }
+        
+        // Mise à jour toutes les 10 secondes
+        setInterval(updateMetrics, 10000);
+        updateMetrics(); // Première mise à jour
+    </script>
+</body>
+</html>

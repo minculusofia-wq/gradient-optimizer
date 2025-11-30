@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Gradient Optimizer - Fichiers sensibles
+p2p.key
+*.key
+*.pem
+
+# Logs
+*.log
+server.log
+*.out
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Node modules (si utilisé)
+node_modules/
+
+# Environment variables
+.env
+.env.local

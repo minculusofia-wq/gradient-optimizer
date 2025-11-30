@@ -1,0 +1,27 @@
+🎯 GRADIENT OPTIMIZER - MODE D'EMPLOI (MAC) 🎯
+
+1️⃣ INSTALLATION (À faire une seule fois):
+   - Ouvre le Terminal dans ce dossier
+   - Tape: ./setup-mac.sh
+   - Attends que l'installation finisse (ça installe Parallax dans un environnement isolé)
+
+2️⃣ LANCER LE NŒUD (MÉTHODE SIMPLE):
+   - Double-clique sur: LANCER_LE_NOEUD.command
+   - Cela va lancer le Scheduler et le Nœud localement.
+   - Tu peux voir l'interface sur: http://localhost:3001
+
+3️⃣ MONITORING (MÉTHODE SIMPLE):
+   - Double-clique sur: LANCER_LE_MONITEUR.command
+   - Cela t'affichera l'état réel de ton nœud.
+
+4️⃣ FARMING:
+   - Pour l'instant, le farming est passif (tu participes au réseau).
+   - Garde le nœud ouvert le plus longtemps possible.
+   - Surveille les annonces officielles pour lier ton wallet quand la feature sera dispo.
+
+📁 FICHIERS IMPORTANTS:
+├── LANCER_LE_NOEUD.command     (Bouton de lancement)
+├── LANCER_LE_MONITEUR.command  (Bouton de surveillance)
+├── setup-mac.sh                (Installe tout)
+├── parallax/                   (Le code source officiel)
+└── p2p.key                     (Ta clé d'identité - NE PAS PERDRE)
