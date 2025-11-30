@@ -39,7 +39,7 @@ Un outil simple et optimisé pour exécuter un nœud Gradient Parallax sur macOS
 
 1. **Clonez ou téléchargez ce dépôt** :
    ```bash
-   git clone https://github.com/VOTRE_USERNAME/gradient-optimizer.git
+   git clone https://github.com/minculusofia-wq/gradient-optimizer.git
    cd gradient-optimizer
    ```
 
@@ -247,7 +247,7 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
 Si vous rencontrez des problèmes :
 1. Consultez la section [Dépannage](#-dépannage)
-2. Ouvrez une [Issue](https://github.com/VOTRE_USERNAME/gradient-optimizer/issues)
+2. Ouvrez une [Issue](https://github.com/minculusofia-wq/gradient-optimizer/issues)
 3. Rejoignez le [Discord Gradient](https://discord.gg/gradient)
 
 ---
